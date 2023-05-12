@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CategoriesService {
 
-  private readonly url = 'http://localhost:3000/categories';
+  //private readonly url = 'http://localhost:3000/categories';
+  private readonly url = 'https://localhost:7286/Categories';
   category!: Categories;
 
   constructor(private http: HttpClient) { }

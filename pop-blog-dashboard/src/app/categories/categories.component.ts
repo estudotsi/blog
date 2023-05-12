@@ -48,6 +48,7 @@ export class CategoriesComponent implements OnInit {
         complete: () => {
           this.toastr.success("Alterado corretamente");
           this.ngOnInit();
+          this.formStatus = "Add";
           this.formCategory = "";
         }
       });
@@ -68,6 +69,7 @@ export class CategoriesComponent implements OnInit {
       complete: () => {
         this.toastr.success("Deletado corretamente");
         this.ngOnInit();
+        this.formStatus = "Add";
         this.formCategory = "";
       }
     });
