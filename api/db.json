@@ -1,0 +1,12 @@
+{
+  "categories": [
+    {
+      "nome": "Mongo ",
+      "id": 1
+    },
+    {
+      "nome": "Angular",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,81 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h3 class="title">Add new post</h3>
+      <p class="mb-5">You can add you new post here</p>
+    </div>
+  </div>
+
+  <form [formGroup]="postForm" (ngSubmit)="onSubmit()">
+
+    <div class="row">
+      <div class="col-md-7">
+        <div class="shadow-effect">
+          <div class="card-body">
+
+            <div class="form-group">
+              <label for="">Title</label>
+              <input type="text" class="form-control" (keyup)="ontitleChanged($event)" formControlName="title"
+              [ngClass]="{'is-invalid': postForm.get('title')?.touched && postForm.get('title')?.invalid}">
+              <div *ngIf="postForm.get('title')?.invalid">
+                <div class="alert alert-danger" *ngIf="postForm.get('title')?.touched && postForm.get('title')?.invalid">
+                  Title is required
+                </div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="">Permalink</label>
+              <input type="text" class="form-control" [disabled]="true" name="permalink" [(ngModel)]="permalink" formControlName="permalink">
+            </div>
+            <div class="form-group">
+              <label for="">Excerpt</label>
+              <textarea name="" id="" cols="30" rows="10" class="form-control" formControlName="excerpt"></textarea>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-5">
+
+        <div class="form-group">
+          <label for="">Plase select a post category</label>
+          <select class="form-control" formControlName="category">
+            <option value="" selected disabled>Please select a category</option>
+            <option *ngFor="let category of categories" value="{{ category.id }}-{{ category.nome }}">{{ category.nome }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="">Post Image</label>
+          <img [src]="imgSrc" class="form-control img-fluid img-preview" alt="">
+          <input type="file" formControlName="postImg" class="form-control" accept="image/*" (change)="showPreview($event)">
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="row mt-5 mb-5">
+
+      <div class="col-md-12">
+        <div class="card shadow-effect">
+          <div class="card-body">
+            <div class="form-group">
+              <label for="">Content</label>
+              <angular-editor placeholder="Add your content here" formControlName="content"></angular-editor>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-12 text-center mb-5 mt-5">
+        <button class="btn btn-info bg-theme">Save post</button>
+        <button class="btn btn-warning ml-3" routerLink="/posts">Back to post</button>
+      </div>
+
+    </div>
+
+  </form>
+
+</div>
